@@ -30,11 +30,5 @@
 </template>
 
 <script setup>
-import HelloWorld from './components/HelloWorld.vue';
 
-
-const elevations = [0, 4, 8, 12, 16, 20]
-
-
-//
 </script>
