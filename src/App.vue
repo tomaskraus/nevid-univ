@@ -13,12 +13,12 @@
       <v-container>
         <v-row justify="space-around">
           <v-col cols="12" md="6">
-            <SheetItem>Hello!</SheetItem>
-            <SheetItem>Hello2!</SheetItem>
-            <SheetItem>Hello3!</SheetItem>
+            <SheetItem label="abc">Hello!</SheetItem>
+            <SheetItem label="def">Hello!</SheetItem>
+            <SheetItem label="3rd lbl">Hello!</SheetItem>
           </v-col>
           <v-col cols="12" md="6">
-            <SheetItem>World</SheetItem>
+            <SheetItem label="common">World</SheetItem>
             <SheetItem></SheetItem>
           </v-col>
         </v-row>
