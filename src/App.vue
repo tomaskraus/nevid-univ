@@ -13,7 +13,7 @@
       <v-container>
         <v-row justify="space-around">
           <v-col cols="12" md="6">
-            <SheetItem label="abc">Hello!</SheetItem>
+            <SheetItem>Hello!</SheetItem>
             <SheetItem label="def">Hello!</SheetItem>
             <SheetItem label="3rd lbl">Hello!</SheetItem>
           </v-col>
