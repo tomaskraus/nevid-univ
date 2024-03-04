@@ -14,7 +14,10 @@
         <v-row justify="space-around">
           <v-col cols="12" md="6">
             <SheetItem>Hello!</SheetItem>
-            <SheetItem label="def">Hello!</SheetItem>
+            <SheetItem label="def">
+              <PairItem label="name">Alice</PairItem>
+              <PairItem label="name 2">Bob</PairItem>
+            </SheetItem>
             <SheetItem label="3rd lbl">Hello!</SheetItem>
           </v-col>
           <v-col cols="12" md="6">
@@ -30,5 +33,7 @@
 </template>
 
 <script setup>
+import PairItem from './components/PairItem.vue';
+
 
 </script>
