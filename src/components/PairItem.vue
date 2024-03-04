@@ -1,10 +1,10 @@
 <template>
-  <v-container class="pa-0 ma-0 w-100">
-        <v-row>
-          <v-col cols="6" xs="6" class="font-weight-bold py-0">
+  <v-container class="pa-0 ma-0" style="max-width: 18em;">
+        <v-row class="pa-0 ma-0 mb-0">
+          <v-col cols="6" class="font-weight-bold pa-0 ma-0">
             {{ label }}:
           </v-col>
-          <v-col cols="6" xs="6" class="pt-0 pb-3">
+          <v-col cols="6" class="pa-0 ma-0">
             <slot></slot>
           </v-col>
         </v-row>

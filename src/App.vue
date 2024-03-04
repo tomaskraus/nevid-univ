@@ -10,18 +10,30 @@
 
     <v-main class="align-center justify-center" style="min-height: 300px;">
 
-      <v-container style="max-width: 1600px;" >
-        <v-row justify="space-around">
+      <v-container style="max-width: 1600px;">
+        <v-row>
           <v-col cols="12" lg="8">
-            <SheetItem>Hello!</SheetItem>
+            <SheetItem>
+              <PairItem label="AuthInfo">{{ Date.now() }}</PairItem>
+              <PairItem label="expires at"><v-btn density="compact">show</v-btn></PairItem>
+            </SheetItem>
             <SheetItem label="def">
-              <PairItem label="name">Alice</PairItem>
-              <PairItem label="name 2">Bob</PairItem>
+              <v-container class="ma-0 pa-0 pb-1 d-flex flex-wrap">
+                    <PairItem label="name">Alice</PairItem>
+                    <PairItem label="occupation">clerk</PairItem>
+              </v-container>
+              <v-container class="ma-0 pa-0 pb-1 d-flex flex-wrap">
+                <PairItem label="name 2">Bob</PairItem>
+                <PairItem label="occupation">worker</PairItem>
+              </v-container>
+
             </SheetItem>
             <SheetItem label="3rd lbl">Hello!</SheetItem>
           </v-col>
           <v-col cols="12" lg="4">
-            <SheetItem label="common">World</SheetItem>
+            <SheetItem label="common">
+              <PairItem label="name 2">Bob</PairItem>
+            </SheetItem>
             <SheetItem></SheetItem>
           </v-col>
         </v-row>
