@@ -1,6 +1,6 @@
 <template>
   <v-sheet v-if="label" :elevation="2" class="px-3 py-1 font-weight-bold border-b border-darker rounded-t" color="grey-lighten-3">{{label}}:</v-sheet>
-  <v-sheet  :elevation="2" class="pa-3 mb-4 ">
+  <v-sheet  :elevation="2" class="pa-3 mb-3">
     <v-sheet class="pt-2">
       <slot>{content}</slot>
     </v-sheet>
