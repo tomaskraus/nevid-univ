@@ -16,7 +16,7 @@ import { createVuetify } from 'vuetify'
 const myCustomLightTheme = {
   dark: false,
   colors: {
-    background: '#EEEEEE',
+    background: '#F8F8F8',
   },
   variables: {
     'border-color': '#111111',
