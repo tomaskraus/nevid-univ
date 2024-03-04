@@ -1,7 +1,7 @@
 <template>
-  <v-sheet  :elevation="2" class="mb-4 mx-2">
-    <v-sheet v-if="label" class="px-3 py-1 font-weight-bold border-b border-darker rounded-t">{{label}}:</v-sheet>
-    <v-sheet class="pa-3 pt-6">
+  <v-sheet v-if="label" :elevation="2" class="px-3 py-1 font-weight-bold border-b border-darker rounded-t" color="grey-lighten-2">{{label}}:</v-sheet>
+  <v-sheet  :elevation="2" class="pa-3 mb-4 ">
+    <v-sheet class="pt-2">
       <slot>{content}</slot>
     </v-sheet>
   </v-sheet>
