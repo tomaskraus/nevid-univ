@@ -18,6 +18,7 @@ const dateStr = computed(() => {
       hour: 'numeric', // numeric, 2-digit
       minute: 'numeric', // numeric, 2-digit
       second: 'numeric', // numeric, 2-digit
+      timeZone: 'UTC'
     })
     : ''
 })
