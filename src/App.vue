@@ -40,14 +40,14 @@ uData.value = data;
                   <DateItem :date="uData.events.registered?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.registered?.timestamp" label="registrar">
-                  {{ uData.events.registered?.registrar_handle }}</PairItem>
+                  <span class="text-primary">{{ uData.events.registered?.registrar_handle }}</span></PairItem>
               </PairContainer>
               <PairContainer>
                 <PairItem label="update date">
                   <DateItem :date="uData.events.updated?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.updated?.timestamp" label="registrar">
-                  {{ uData.events.updated?.registrar_handle }}
+                  <span class="text-primary">{{ uData.events.updated?.registrar_handle }}</span>
                 </PairItem>
               </PairContainer>
               <PairContainer>
@@ -55,14 +55,14 @@ uData.value = data;
                   <DateItem :date="uData.events.transferred?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.transferred?.timestamp" label="registrar">
-                  {{ uData.events.transferred?.registrar_handle }}</PairItem>
+                  <span class="text-primary">{{ uData.events.transferred?.registrar_handle }}</span></PairItem>
               </PairContainer>
               <PairContainer>
                 <PairItem label="delete date">
                   <DateItem :date="uData.events.unregistered?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.unregistered?.timestamp" label="registrar">
-                  {{ uData.events.unregistered?.registrar_handle }}</PairItem>
+                  <span class="text-primary">{{ uData.events.unregistered?.registrar_handle }}</span></PairItem>
               </PairContainer>
             </SheetItem>
             <SheetItem label="3rd lbl">Hello!</SheetItem>
