@@ -1,3 +1,14 @@
+<script setup>
+import { ref } from 'vue'
+
+const uData = ref({})
+
+import data from '../public/domain'
+uData.value = data;
+
+</script>
+
+
 <template>
   <v-app class="rounded">
     <v-app-bar color="primary">
@@ -18,7 +29,9 @@
           <v-col cols="12" lg="8">
             <SheetItem>
               <PairItem label="AuthInfo"><v-btn color="primary" density="compact">show</v-btn></PairItem>
-              <PairItem label="expires at">{{ Date.now() }}</PairItem>
+              <PairItem label="expires at">
+                {{ uData.expires_at }}
+              </PairItem>
             </SheetItem>
             <SheetItem label="def">
               <PairContainer>
@@ -45,9 +58,6 @@
     </v-main>
   </v-app>
 </template>
-
-<script setup>
-</script>
 
 
 <style>
