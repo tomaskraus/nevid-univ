@@ -18,15 +18,14 @@
               <PairItem label="expires at">{{ Date.now() }}</PairItem>
             </SheetItem>
             <SheetItem label="def">
-              <v-container class="ma-0 pa-0 pb-1 d-flex flex-wrap">
+              <PairContainer>
                 <PairItem label="name">Alice</PairItem>
                 <PairItem label="occupation">clerk</PairItem>
-              </v-container>
-              <v-container class="ma-0 pa-0 pb-1 d-flex flex-wrap">
+              </PairContainer>
+              <PairContainer>
                 <PairItem label="name 2">Bob</PairItem>
                 <PairItem label="occupation">worker</PairItem>
-              </v-container>
-
+              </PairContainer>
             </SheetItem>
             <SheetItem label="3rd lbl">Hello!</SheetItem>
           </v-col>
