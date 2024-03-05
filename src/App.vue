@@ -30,7 +30,7 @@ uData.value = data;
             <SheetItem>
               <PairItem label="AuthInfo"><v-btn color="primary" density="compact">show</v-btn></PairItem>
               <PairItem label="expires at">
-                {{ uData.expires_at }}
+                <DateItem :date="uData.expires_at" />
               </PairItem>
             </SheetItem>
             <SheetItem label="def">
