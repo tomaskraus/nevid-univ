@@ -17,6 +17,7 @@ const myCustomLightTheme = {
   dark: false,
   colors: {
     background: "#F8F8F8",
+    "primary": "#4994EC",
     "on-background": "#323434",
   },
   variables: {
