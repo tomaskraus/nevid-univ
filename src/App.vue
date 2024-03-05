@@ -33,14 +33,36 @@ uData.value = data;
                 <DateItem :date="uData.expires_at" />
               </PairItem>
             </SheetItem>
-            <SheetItem label="def">
+
+            <SheetItem label="events">
               <PairContainer>
-                <PairItem label="name">Alice</PairItem>
-                <PairItem label="occupation">clerk</PairItem>
+                <PairItem label="create date">
+                  <DateItem :date="uData.events.registered?.timestamp" />
+                </PairItem>
+                <PairItem v-if="uData.events.registered?.timestamp" label="registrar">
+                  {{ uData.events.registered?.registrar_handle }}</PairItem>
               </PairContainer>
               <PairContainer>
-                <PairItem label="name 2">Bob</PairItem>
-                <PairItem label="occupation">worker</PairItem>
+                <PairItem label="update date">
+                  <DateItem :date="uData.events.updated?.timestamp" />
+                </PairItem>
+                <PairItem v-if="uData.events.updated?.timestamp" label="registrar">
+                  {{ uData.events.updated?.registrar_handle }}
+                </PairItem>
+              </PairContainer>
+              <PairContainer>
+                <PairItem label="transfer date">
+                  <DateItem :date="uData.events.transferred?.timestamp" />
+                </PairItem>
+                <PairItem v-if="uData.events.transferred?.timestamp" label="registrar">
+                  {{ uData.events.transferred?.registrar_handle }}</PairItem>
+              </PairContainer>
+              <PairContainer>
+                <PairItem label="delete date">
+                  <DateItem :date="uData.events.unregistered?.timestamp" />
+                </PairItem>
+                <PairItem v-if="uData.events.unregistered?.timestamp" label="registrar">
+                  {{ uData.events.unregistered?.registrar_handle }}</PairItem>
               </PairContainer>
             </SheetItem>
             <SheetItem label="3rd lbl">Hello!</SheetItem>
