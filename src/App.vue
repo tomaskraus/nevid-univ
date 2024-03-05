@@ -1,6 +1,6 @@
 <template>
   <v-app class="rounded">
-    <v-app-bar title="Application bar"></v-app-bar>
+    <v-app-bar color="#4994EC" title="Application bar"></v-app-bar>
 
     <v-navigation-drawer mobile-breakpoint="sm">
       <v-list>
@@ -14,13 +14,13 @@
         <v-row>
           <v-col cols="12" lg="8">
             <SheetItem>
-              <PairItem label="AuthInfo">{{ Date.now() }}</PairItem>
-              <PairItem label="expires at"><v-btn density="compact">show</v-btn></PairItem>
+              <PairItem label="AuthInfo"><v-btn color="#4994EC" density="compact">show</v-btn></PairItem>
+              <PairItem label="expires at">{{ Date.now() }}</PairItem>
             </SheetItem>
             <SheetItem label="def">
               <v-container class="ma-0 pa-0 pb-1 d-flex flex-wrap">
-                    <PairItem label="name">Alice</PairItem>
-                    <PairItem label="occupation">clerk</PairItem>
+                <PairItem label="name">Alice</PairItem>
+                <PairItem label="occupation">clerk</PairItem>
               </v-container>
               <v-container class="ma-0 pa-0 pb-1 d-flex flex-wrap">
                 <PairItem label="name 2">Bob</PairItem>
@@ -45,7 +45,13 @@
 </template>
 
 <script setup>
-import PairItem from './components/PairItem.vue';
-
-
 </script>
+
+
+<style>
+html {
+  line-height: 0.9;
+  letter-spacing: -0.1;
+  font-size: 0.8rem;
+}
+</style>
