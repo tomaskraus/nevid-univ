@@ -1,6 +1,9 @@
 <template>
   <v-app class="rounded">
-    <v-app-bar color="primary" prominent title="Application bar"></v-app-bar>
+    <v-app-bar color="primary">
+      <v-app-bar-nav-icon prepend-icon variant="text" @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
+      <v-toolbar-title>Ferda</v-toolbar-title>
+    </v-app-bar>
 
     <v-navigation-drawer mobile-breakpoint="sm">
       <v-list>
