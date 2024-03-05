@@ -1,6 +1,6 @@
 <template>
   <v-app class="rounded">
-    <v-app-bar color="#4994EC" title="Application bar"></v-app-bar>
+    <v-app-bar color="primary" prominent title="Application bar"></v-app-bar>
 
     <v-navigation-drawer mobile-breakpoint="sm">
       <v-list>
@@ -14,7 +14,7 @@
         <v-row>
           <v-col cols="12" lg="8">
             <SheetItem>
-              <PairItem label="AuthInfo"><v-btn color="#4994EC" density="compact">show</v-btn></PairItem>
+              <PairItem label="AuthInfo"><v-btn color="primary" density="compact">show</v-btn></PairItem>
               <PairItem label="expires at">{{ Date.now() }}</PairItem>
             </SheetItem>
             <SheetItem label="def">
