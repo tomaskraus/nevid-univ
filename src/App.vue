@@ -85,7 +85,19 @@ uData.value = data;
                 </ul>
               </PairItem>
             </SheetItem>
-            <SheetItem></SheetItem>
+
+            <SheetItem label="KeySet">
+              <PairItem label="handle"><span class="text-primary">{{ uData.keyset.handle }}</span></PairItem>
+              <PairItem label="registrar"><span class="text-primary">{{ uData.keyset.registrar }}</span></PairItem>
+              <PairItem label="DNS Keys">
+                <ul>
+                  <li  class="my-list-item-simple pb-2 my-no-overflow" v-for="k in uData.keyset.dns_keys">
+                    {{ k }}
+                  </li>
+                </ul>
+              </PairItem>
+            </SheetItem>
+
           </v-col>
         </v-row>
       </v-container>
@@ -105,5 +117,12 @@ html {
 
 .my-list-item-simple {
   list-style-type: none;
+}
+
+.my-no-overflow {
+    /* white-space: nowrap; */
+    /* overflow: hidden; */
+    /* text-overflow: ellipsis; */
+    word-wrap: break-word;
 }
 </style>
