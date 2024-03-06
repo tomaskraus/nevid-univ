@@ -73,6 +73,18 @@ uData.value = data;
               <PairItem label="organization">{{ uData.owner.organization }}</PairItem>
               <PairItem label="name">{{ uData.owner.name }}</PairItem>
             </SheetItem>
+
+            <SheetItem label="NSSet">
+              <PairItem label="handle"><span class="text-primary">{{ uData.nsset.handle }}</span></PairItem>
+              <PairItem label="registrar"><span class="text-primary">{{ uData.nsset.registrar }}</span></PairItem>
+              <PairItem label="DNS">
+                <ul>
+                  <li  class="my-list-item-simple pb-1" v-for="d in uData.nsset.dns">
+                    {{ `${d.name} (${d.ip_address})` }}
+                  </li>
+                </ul>
+              </PairItem>
+            </SheetItem>
             <SheetItem></SheetItem>
           </v-col>
         </v-row>
@@ -89,5 +101,9 @@ html {
   line-height: 0.9;
   letter-spacing: -0.1;
   font-size: 0.8rem;
+}
+
+.my-list-item-simple {
+  list-style-type: none;
 }
 </style>
