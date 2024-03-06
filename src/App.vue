@@ -65,11 +65,13 @@ uData.value = data;
                   <span class="text-primary">{{ uData.events.unregistered?.registrar_handle }}</span></PairItem>
               </PairContainer>
             </SheetItem>
-            <SheetItem label="3rd lbl">Hello!</SheetItem>
+            <SheetItem label="state flags"></SheetItem>
           </v-col>
           <v-col cols="12" lg="4">
-            <SheetItem label="common">
-              <PairItem label="name 2">Bob</PairItem>
+            <SheetItem label="owner">
+              <PairItem label="handle"><span class="text-primary">{{ uData.owner.handle }}</span></PairItem>
+              <PairItem label="organization">{{ uData.owner.organization }}</PairItem>
+              <PairItem label="name">{{ uData.owner.name }}</PairItem>
             </SheetItem>
             <SheetItem></SheetItem>
           </v-col>
