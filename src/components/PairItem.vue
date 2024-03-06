@@ -1,6 +1,6 @@
 <template>
   <v-container class="pa-0 ma-0" style="max-width: 24em;">
-    <v-row align="center" class="pa-0 ma-0 mb-2">
+    <v-row :align="verticalAlign" class="pa-0 ma-0 mb-2">
       <v-col cols="4" class="font-weight-bold pa-0 ma-0">
         {{ capitalize(label) }}:
       </v-col>
@@ -12,8 +12,11 @@
 </template>
 
 <script setup>
-import { capitalize } from 'vue';
+import { capitalize, computed } from 'vue';
 const props = defineProps({
-  label: String
+  label: String,
+  align: String   //"center" | "end" | "start" | "stretch" | "baseline"
 })
+
+const verticalAlign = computed(() => props.align || "center")
 </script>
