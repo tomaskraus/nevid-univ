@@ -1,10 +1,23 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
-const uData = ref({})
+const uData = ref(null)
+const detail = ref(false)
+
 
 import data from '../public/domain'
 uData.value = data;
+
+
+const stateFlags = computed(() => {
+  if (!uData.value) {
+    return []
+  }
+  if (detail.value) {
+    return uData.value.state_flags.flags
+  }
+  return uData.value.state_flags.flags.filter((f) => f.active)
+})
 
 </script>
 
@@ -23,8 +36,9 @@ uData.value = data;
     </v-navigation-drawer>
 
     <v-main class="align-center justify-center" style="min-height: 300px;">
-
       <v-container style="max-width: 1600px;">
+        <h2>neviditelna-univerzita.cz</h2>
+        <v-switch label="Verbose view" v-model="detail" color="primary"></v-switch>
         <v-row>
           <v-col cols="12" lg="8">
             <SheetItem>
@@ -40,7 +54,8 @@ uData.value = data;
                   <DateItem :date="uData.events.registered?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.registered?.timestamp" label="registrar">
-                  <span class="text-primary">{{ uData.events.registered?.registrar_handle }}</span></PairItem>
+                  <span class="text-primary">{{ uData.events.registered?.registrar_handle }}</span>
+                </PairItem>
               </PairContainer>
               <PairContainer>
                 <PairItem label="update date">
@@ -55,17 +70,26 @@ uData.value = data;
                   <DateItem :date="uData.events.transferred?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.transferred?.timestamp" label="registrar">
-                  <span class="text-primary">{{ uData.events.transferred?.registrar_handle }}</span></PairItem>
+                  <span class="text-primary">{{ uData.events.transferred?.registrar_handle }}</span>
+                </PairItem>
               </PairContainer>
               <PairContainer>
                 <PairItem label="delete date">
                   <DateItem :date="uData.events.unregistered?.timestamp" />
                 </PairItem>
                 <PairItem v-if="uData.events.unregistered?.timestamp" label="registrar">
-                  <span class="text-primary">{{ uData.events.unregistered?.registrar_handle }}</span></PairItem>
+                  <span class="text-primary">{{ uData.events.unregistered?.registrar_handle }}</span>
+                </PairItem>
               </PairContainer>
             </SheetItem>
-            <SheetItem label="state flags"></SheetItem>
+
+            <SheetItem label="state flags">
+              <ul>
+                <li class="my-list-item-simple pb-2 my-no-overflow" v-for="f in stateFlags">
+                  <FlagItem :active="f.active" :description="f.description" />
+                </li>
+              </ul>
+            </SheetItem>
           </v-col>
           <v-col cols="12" lg="4">
             <SheetItem label="owner">
@@ -79,7 +103,7 @@ uData.value = data;
               <PairItem label="registrar"><span class="text-primary">{{ uData.nsset.registrar }}</span></PairItem>
               <PairItem label="DNS">
                 <ul>
-                  <li  class="my-list-item-simple pb-1" v-for="d in uData.nsset.dns">
+                  <li class="my-list-item-simple pb-1" v-for="d in uData.nsset.dns">
                     {{ `${d.name} (${d.ip_address})` }}
                   </li>
                 </ul>
@@ -91,7 +115,7 @@ uData.value = data;
               <PairItem label="registrar"><span class="text-primary">{{ uData.keyset.registrar }}</span></PairItem>
               <PairItem label="DNS Keys">
                 <ul>
-                  <li  class="my-list-item-simple pb-2 my-no-overflow" v-for="k in uData.keyset.dns_keys">
+                  <li class="my-list-item-simple pb-2 my-no-overflow" v-for="k in uData.keyset.dns_keys">
                     {{ k }}
                   </li>
                 </ul>
@@ -120,9 +144,9 @@ html {
 }
 
 .my-no-overflow {
-    /* white-space: nowrap; */
-    /* overflow: hidden; */
-    /* text-overflow: ellipsis; */
-    word-wrap: break-word;
+  /* white-space: nowrap; */
+  /* overflow: hidden; */
+  /* text-overflow: ellipsis; */
+  word-wrap: break-word;
 }
 </style>
