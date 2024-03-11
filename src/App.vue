@@ -1,5 +1,7 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useDisplay } from 'vuetify'
+const { mdAndUp } = useDisplay()
 
 const uData = ref(null)
 const detail = ref(false)
@@ -84,12 +86,13 @@ const stateFlags = computed(() => {
             </SheetItem>
 
             <SheetItem label="state flags">
-              <ul>
-                <li class="my-list-item-simple pb-2 my-no-overflow" v-for="f in stateFlags">
-                  <FlagItem :active="f.active" :description="f.description" />
-                </li>
-              </ul>
+              <v-sheet class="d-flex flex-column flex-wrap overflow-hidden" :max-height="mdAndUp ? 300 : 'none'">
+                <div class="pb-2 mr-2" v-for="f in stateFlags">
+                  <FlagItem :item="f" />
+                </div>
+              </v-sheet>
             </SheetItem>
+
           </v-col>
           <v-col cols="12" lg="4">
             <SheetItem label="owner">

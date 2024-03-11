@@ -1,10 +1,16 @@
 <script setup>
 const props = defineProps({
-  description: String,
-  active: Boolean,
+  item: Object,
 })
 </script>
 
 <template>
-  {{ `${active ? "v" : "x"} ${description}` }}
+  <div v-if="item.active">
+    <v-icon color="success" icon="mdi-check-circle"></v-icon>
+    <span class="text-success">&nbsp;{{ item.description }}</span>
+  </div>
+  <div v-else>
+    <v-icon color="error" icon="mdi-check-circle"></v-icon>
+    <span class="text-error">&nbsp;{{ item.description }}</span>
+  </div>
 </template>
