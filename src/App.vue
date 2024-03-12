@@ -1,6 +1,13 @@
 <script setup>
-import { ref, computed } from 'vue'
+import { ref, computed, capitalize } from 'vue'
 import { useDisplay } from 'vuetify'
+
+const myApps = [
+  { text: 'registry', icon: 'mdi-earth' },
+  // { text: 'highlights', icon: 'mdi-white-balance-sunny' },
+]
+const myAppSelectedIndex = ref(0)
+
 const { mdAndUp } = useDisplay()
 
 const uData = ref(null)
@@ -9,6 +16,7 @@ const detail = ref(false)
 
 import data from '../public/domain'
 uData.value = data;
+
 
 
 const stateFlags = computed(() => {
@@ -32,8 +40,21 @@ const stateFlags = computed(() => {
     </v-app-bar>
 
     <v-navigation-drawer mobile-breakpoint="sm">
-      <v-list>
-        <v-list-item title="Navigation drawer"></v-list-item>
+      <v-list density="compact" color="amber-darken-3">
+        <v-list-subheader>APPLICATIONS</v-list-subheader>
+
+        <v-list-item v-for="(item, i) in myApps"
+          :key="i"
+          :value="item"
+          :active="myAppSelectedIndex === i"
+          @click="myAppSelectedIndex = i"
+        >
+        <template v-slot:prepend>
+          <v-icon :icon="item.icon"></v-icon>
+        </template>
+
+          <v-list-item-title v-text="capitalize(item.text)"></v-list-item-title>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
