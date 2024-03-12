@@ -10,7 +10,7 @@ const props = defineProps({
     <span class="text-success">&nbsp;{{ item.description }}</span>
   </div>
   <div v-else>
-    <v-icon color="error" icon="mdi-check-circle"></v-icon>
+    <v-icon color="error" icon="mdi-close-circle"></v-icon>
     <span class="text-error">&nbsp;{{ item.description }}</span>
   </div>
 </template>
