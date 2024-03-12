@@ -96,9 +96,7 @@ const stateFlags = computed(() => {
           </v-col>
           <v-col cols="12" lg="4">
             <SheetItem label="owner">
-              <PairItem label="handle"><span class="text-primary">{{ uData.owner.handle }}</span></PairItem>
-              <PairItem label="organization">{{ uData.owner.organization }}</PairItem>
-              <PairItem label="name">{{ uData.owner.name }}</PairItem>
+              <PersonDetailItem :person="uData.owner"></PersonDetailItem>
             </SheetItem>
 
             <SheetItem label="NSSet">
