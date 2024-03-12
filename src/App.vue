@@ -99,6 +99,19 @@ const stateFlags = computed(() => {
               <PersonDetailItem :person="uData.owner"></PersonDetailItem>
             </SheetItem>
 
+            <v-container v-if="detail" class="ma-0 pa-0">
+              <SheetItem v-for="ac in uData.administrative_contacts" label="administrative contact">
+                <PersonDetailItem :person="ac"></PersonDetailItem>
+              </SheetItem>
+            </v-container>
+            <v-container v-else class="ma-0 pa-0">
+              <SheetItem label="administrative contacts">
+                <PairItem v-for="ac in uData.administrative_contacts" :label="ac.name">
+                  <span class="text-primary">{{ ac.handle }}</span>
+                </PairItem>
+              </SheetItem>
+            </v-container>
+
             <SheetItem label="NSSet">
               <PairItem label="handle"><span class="text-primary">{{ uData.nsset.handle }}</span></PairItem>
               <PairItem label="registrar"><span class="text-primary">{{ uData.nsset.registrar }}</span></PairItem>
