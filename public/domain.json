@@ -1,4 +1,4 @@
-export default {
+{
   "fqdn": "neviditelna-univerzita.cz",
   "nsset": {
       "handle": "ZEMEPLOCHA-NSSET",

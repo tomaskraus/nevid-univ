@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed, capitalize } from 'vue'
+import { ref, computed, onMounted, capitalize } from 'vue'
 import { useDisplay } from 'vuetify'
 
 const myApps = [
@@ -11,12 +11,22 @@ const myAppSelectedIndex = ref(0)
 const { mdAndUp } = useDisplay()
 
 const uData = ref(null)
+const uDataStatus = ref('')
 const detail = ref(false)
 
 
-import data from '../public/domain'
-uData.value = data;
-
+async function fetchData() {
+  try {
+    await new Promise((resolve) => setTimeout(() => resolve(null), 2000))
+    const res = await fetch('./domain.json');
+    if (!res.ok) {
+      throw new Error(res.statusText)
+    }
+    uData.value = await res.json()
+  } catch (e) {
+    uDataStatus.value = e.message;
+  }
+}
 
 
 const stateFlags = computed(() => {
@@ -27,6 +37,11 @@ const stateFlags = computed(() => {
     return uData.value.state_flags.flags
   }
   return uData.value.state_flags.flags.filter((f) => f.active)
+})
+
+
+onMounted(() => {
+  fetchData()
 })
 
 </script>
@@ -43,15 +58,11 @@ const stateFlags = computed(() => {
       <v-list density="compact" color="amber-darken-3">
         <v-list-subheader>APPLICATIONS</v-list-subheader>
 
-        <v-list-item v-for="(item, i) in myApps"
-          :key="i"
-          :value="item"
-          :active="myAppSelectedIndex === i"
-          @click="myAppSelectedIndex = i"
-        >
-        <template v-slot:prepend>
-          <v-icon :icon="item.icon"></v-icon>
-        </template>
+        <v-list-item v-for="(item, i) in myApps" :key="i" :value="item" :active="myAppSelectedIndex === i"
+          @click="myAppSelectedIndex = i">
+          <template v-slot:prepend>
+            <v-icon :icon="item.icon"></v-icon>
+          </template>
 
           <v-list-item-title v-text="capitalize(item.text)"></v-list-item-title>
         </v-list-item>
@@ -62,7 +73,7 @@ const stateFlags = computed(() => {
       <v-container style="max-width: 1600px;">
         <h2>neviditelna-univerzita.cz</h2>
         <v-switch label="Verbose view" v-model="detail" color="primary"></v-switch>
-        <v-row>
+        <v-row v-if="uData !== null">
           <v-col cols="12" lg="8">
             <SheetItem>
               <PairItem label="AuthInfo"><v-btn color="primary" density="compact">show</v-btn></PairItem>
@@ -157,6 +168,16 @@ const stateFlags = computed(() => {
               </PairItem>
             </SheetItem>
 
+          </v-col>
+        </v-row>
+        <v-row v-else justify="center" align="center" style="height: 300px" class="text-center">
+          <v-col cols="8">
+            <v-container>
+              <v-progress-circular v-if="uDataStatus === ''" indeterminate :size="75" :width="7"></v-progress-circular>
+              <span v-else>
+                <v-alert closable :text="uDataStatus" type="warning"></v-alert>
+              </span>
+            </v-container>
           </v-col>
         </v-row>
       </v-container>
